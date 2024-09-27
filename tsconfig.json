@@ -1,6 +1,28 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    "baseUrl": "./src",  // Base directory for resolving non-relative module names
+    "paths": {
+      "@components/*": ["components/*"],  // Alias for components
+      "@screens/*": ["screens/*"],        // Alias for screens
+      "@hooks/*": ["hooks/*"],            // Alias for custom hooks
+      "@services/*": ["services/*"],      // Alias for services (e.g., API calls)
+      "@utils/*": ["utils/*"],            // Alias for utility functions
+      "@assets/*": ["assets/*"],          // Alias for static assets
+      "@types/*": ["types/*"]             // Alias for TypeScript types
+    },
+    "allowSyntheticDefaultImports": true, // Allows default imports from modules without default exports
+    "esModuleInterop": true,              // Ensures compatibility with commonjs and ES modules
+    "skipLibCheck": true,                 // Skips type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforces consistent file name casing
+    "moduleResolution": "node",           // TypeScript resolves modules in a Node.js-like manner
+    "noEmit": true                        // Disables emitting of compiled files (useful if using Babel with Expo)
+  },
+  "exclude": [
+    "node_modules",  // Exclude node_modules from compilation
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
